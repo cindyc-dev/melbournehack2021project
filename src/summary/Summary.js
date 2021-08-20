@@ -6,26 +6,27 @@ import FeeTotal from './FeeTotal';
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 export default function Summary() {
 
-  const cardsRef = firebase.collection('Cards')
-  const query = cardsRef.orderBy('createdAt').limit(25);
+  // const cardsRef = firebase.collection('Cards')
+  // const query = cardsRef.orderBy('createdAt').limit(25);
 
-  const [cards, setCards] = useCollectionData(query, {idField: 'id'})
+  // const [cards, setCards] = useCollectionData(query, {idField: 'id'})
 
-  // const [cards, setCards] = useState([
-  //   {
-  //     id: 1,
-  //     name : 'Netflex',
-  //     price : 10.00,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'YewTube',
-  //     price: 20.00,
-  //   }
-  // ])
+  const [cards, setCards] = useState([
+    {
+      id: 1,
+      name : 'Netflex',
+      price : 10.00,
+    },
+    {
+      id: 2,
+      name: 'YewTube',
+      price: 20.00,
+    }
+  ])
 
   // Add Subscription Card
   const addCard = (card) => {

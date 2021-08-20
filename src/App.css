@@ -5,18 +5,22 @@
   text-align: center;
   margin: 0;
   padding: 0;
+  font-family: Nunito;
+  font-style: normal;
 }
 
 .summary {
   position: absolute;
   right: 0;
-  width: 25%;
-  height: 90%;
-  top: 10%;
+  width: 22vw;
+  height: 100vh;
+  top: 10vh;
+  z-index: -1;
 
   background: #FFFFFF;
   box-shadow: -3px 0px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px 0px 0px 10px;
+  padding: 1em;
 }
 
 .card {
@@ -26,14 +30,14 @@
 
   display: flex;
   margin: 1em;
-  padding: 1em;
+  padding: 0.5em 1.5em;
 }
 
 .name {
   font-family: Nunito;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 33px;
   text-align: center;
   color: #2E2624;
@@ -43,7 +47,7 @@
   font-family: Nunito;
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 27px;
   text-align: center;
 
@@ -51,11 +55,15 @@
 }
 
 .search-area {
-  top: 20%;
-  width: 65%;
-  height: 100%;
-  left: 7%;
+  position: relative;
+  top: 8vh;
+  left: 4vw;
+  width: 63vw;
+  height: 100vh;
+  
   background: #DCDDE4;
+  padding: 2em 8em 2em 3em;
+  z-index: -2;
 }
 
 .header {
@@ -78,23 +86,27 @@
   color: #433633;
 }
 
+
+.navbar {
+  position: absolute;
+  width: 4%;
+  height: 100vh;
+  top: 10%;
+  z-index: -1;
+
+  background: #FFFFFF;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
 .search-title {
   font-family: Nunito;
   font-style: normal;
   font-weight: 800;
   font-size: 30px;
+  text-align: left;
   line-height: 41px;
   color: #5C5552;
-}
-
-.navbar {
-  position: absolute;
-  width: 5%;
-  height: 90%;
-  top: 10%;
-
-  background: #FFFFFF;
-  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+  
 }
 
 .search-list {
@@ -105,11 +117,26 @@
 
 .search-card {
   background: #FFFFFF;
-  /* margin: 2em; */
+  margin: 2em 0em;
   border-radius: 10px;
+  padding: 1em;
   width: 208px;
   height: 265px;
   filter: drop-shadow(4px 4px 6px rgba(67, 54, 51, 0.11));
+}
+
+.searchname {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+  color: #433633;
+}
+
+.searchprice {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #5C5552;
 }
 
 .title {
@@ -125,7 +152,14 @@
 .search-bar {
   /* width: 898px;
   height: 42px; */
-  padding: 1em;
+  position: relative;
+  width: 96%;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  
+  padding: 1em 2em;
   background: #FFFFFF;
   box-shadow: 0px 4px 6px rgba(67, 54, 51, 0.1);
   border-radius: 20px;
