@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaTrash } from 'react-icons/fa';
 import CardDropDown from './CardDropDown';
 
 export default function Card({ card, onDelete }) {
@@ -14,7 +15,8 @@ export default function Card({ card, onDelete }) {
                 {currency}{card.price}
                 {/* .toFixed(2) */}
             </div>
-            <CardDropDown onDelete={onDelete} card={card}/>
+            <FaTrash className="card-drop-down" onClick={onDelete(card.id)}/>
+            {/* <CardDropDown onDelete={onDelete} card={card}/> */}
         </div>
     )
 }

@@ -226,6 +226,7 @@
 }
 .search-card:hover{
   cursor: pointer;
+  transform: scale(0.98);
 }
 
 .searchname {
@@ -356,27 +357,18 @@
   line-height: 25px;
   /* identical to box height */
 
-  display: flex;
   align-items: center;
   text-align: center;
-
-  margin-left: auto;
-  margin-right: auto;
-
   color: #FFFFFF;
 
   width: 74%;
-  /* margin: 2em; */
+  margin: 1.5em;
   padding: 0.5em;
   background: #1A936F;
   box-shadow: 0px 4px 6px rgba(67, 54, 51, 0.1);
   border-radius: 20px;
   border: 0px solid transparent;
 }
-
-/* .login__google {
-  text-align: center;
-} */
 
 .login-title {
   font-style: normal;
@@ -433,6 +425,10 @@ a:link {
 .register-text {
   margin-right: 5em;
   text-align: center;
+}
+
+.img {
+  margin-top: 10%;
 }
 
 .trackzu {

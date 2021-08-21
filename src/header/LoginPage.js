@@ -47,7 +47,7 @@ export default function LoginPage() {
             <Link to="/reset">Forgot Password</Link>
           </div>
           <button
-            
+            className="login__btn"
             onClick={() => signInWithEmailAndPassword(email, password)}
           >
             Login
@@ -64,7 +64,6 @@ export default function LoginPage() {
         <div className="slogan">
           <p>A central place to manage all your subscriptions, across all platform and devices.</p>
         </div>
-        {/* oggeyy */}
       </div>
       {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(26, 147, 111, 0.58)" 
           fill-opacity="1" d="M0,64L48,90.7C96,117,192,171,288,176C384,181,480,139,576,138.7C672,139,768,181,

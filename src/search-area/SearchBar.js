@@ -16,7 +16,7 @@ export default function SearchBar({ onAdd, searchcards }) {
                     } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())){
                         return val
                     }
-                    // return null
+                    return null
                 }).map((val, key) => {
                     return (
                         <SearchCard

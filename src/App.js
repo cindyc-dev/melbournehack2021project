@@ -130,7 +130,6 @@ export default function App() {
             <Navbar />
           </Route>
         </Switch>
-        {/* <img src = "/images/niwhna0y24v61 (2).png" alt="test"/> */}
       </div>
     </Router>
   );
