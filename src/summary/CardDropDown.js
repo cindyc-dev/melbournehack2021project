@@ -17,7 +17,6 @@ export default function CardDropDown({ onDelete, card }) {
         setAnchorEl(null)
     }
     
-
     return (
         <div className="card-drop-down">
             <IconButton

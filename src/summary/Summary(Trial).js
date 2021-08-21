@@ -1,10 +1,23 @@
-import './App.css';
 import React, { useState } from 'react'
-import CardList from './summary/CardList'
+import CardList from './CardList'
 import AddCard from './AddCard'
-import FeeTotal from './summary/FeeTotal';
+import FeeTotal from './FeeTotal'
+import firebase from 'firebase'
 
-function Summary() {
+const db = firebase.firestore()
+var collectionRef = db.collection("users";
+)
+export default class Summary extends React.Component {
+    constructor(propstrial){
+        super(propstrial);
+        this.state = {subresults:[]}
+        collectionRef.get().then((querySnapshot)=>{
+            var subresultsArray = []
+            querySnapfor.forEach((| ))
+        }
+  
+const user = firebase.auth().currentUser
+  console.log(user)
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -33,19 +46,16 @@ function Summary() {
   return (
     <div className="summary">
 
-      <AddCard onAdd={addCard} />
+      <FeeTotal cards={cards}/>
 
+      <p className="summary-title">Your Subscriptions</p>
+      
       <CardList
         cards={cards}
         onDelete={deleteCard}
       />
+      <AddCard onAdd={addCard} />
 
-      <FeeTotal cards={cards}/>
-
-      
-      
     </div>
   );
 }
-
-export default Summary;

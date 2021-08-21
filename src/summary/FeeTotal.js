@@ -1,3 +1,5 @@
+import { FaChartLine } from "react-icons/fa";
+
 export default function FeeTotal({cards}){
 
     var totalprice = 0.00;
@@ -6,7 +8,10 @@ export default function FeeTotal({cards}){
     ))
     return (
         <div className="total-fee">
-            <p>The total price is ${totalprice.toFixed(2)}</p>
+            
+            <p className="summary-title"><FaChartLine />Expected Expense</p>
+            <p className="total-price">${totalprice}</p>
+            {/* .toFixed(2) */}
             
         </div>
     )

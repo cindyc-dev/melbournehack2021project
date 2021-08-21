@@ -1,59 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CardList from './CardList'
 import AddCard from './AddCard'
-import FeeTotal from './FeeTotal';
+import FeeTotal from './FeeTotal'
+// import CardFilter from './CardFilter'
 
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-
-export default function Summary() {
-
-  // const cardsRef = firebase.collection('Cards')
-  // const query = cardsRef.orderBy('createdAt').limit(25);
-
-  // const [cards, setCards] = useCollectionData(query, {idField: 'id'})
-
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      name : 'Netflex',
-      price : 10.00,
-    },
-    {
-      id: 2,
-      name: 'YewTube',
-      price: 20.00,
-    }
-  ])
-
-  // Add Subscription Card
-  const addCard = (card) => {
-    const id = Math.floor(Math.random()*1000) + 1 // creates a random id
-    const newCard = { id, ...card }
-    setCards([...cards, newCard])
-  }
-
-  // Delete Card
-  const deleteCard = (id) =>{
-    setCards(cards.filter((card) => card.id !== id))
-  }
+export default function Summary({  onDelete, mySubs }) {
 
   return (
     <div className="summary">
+      <FeeTotal cards={mySubs}/>
 
-      <AddCard onAdd={addCard} />
+      <p className="summary-title">Your Subscriptions</p>
 
+      {/* Subscriptions: {mySubs.map((sub)=>(
+        <div>{sub.id}</div>
+      ))} */}
       <CardList
-        cards={cards}
-        onDelete={deleteCard}
+        cards={mySubs}
+        onDelete={onDelete}
       />
+      <AddCard />
 
-      <FeeTotal cards={cards}/>
-
-      
-      
     </div>
   );
 }
