@@ -1,5 +1,8 @@
 # trackzu
 > Calculates total monthly subscription fees
+
+![login page](./login-page.png)
+![main page](./main-page.png)
 ## Inspiration
 With increasing use and development of digital technology, more people are subscribing to online entertainment services (i.e. Netflix, YouTube, etc.). It is easy to overlook the need to keep track of monthly subscriptions. Especially you do not have to consciously make a payment since automatic billing is doing the task for you. However, this could raise a problem as money could be deducted unnecessarily from your credit account if there are changes made to those services. Thus, it is important to keep track of your subscriptions and stay organized.
 
