@@ -3,7 +3,7 @@ import {useState} from 'react'
 import SearchCard from './SearchCard'
 
 
-export default function SearchBar({ onAdd, searchcards }) {
+export default function SearchBar({ sublist, onAdd, searchcards }) {
     const [searchTerm, setSearchTerm] = useState('')
    
     return (
@@ -12,7 +12,9 @@ export default function SearchBar({ onAdd, searchcards }) {
             <div className="search-list">
                 {searchcards.filter((val) => {
                     if (searchTerm === ""){
-                        return val
+                        if (! sublist.includes(val.id)){
+                            return val
+                        }
                     } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())){
                         return val
                     }
@@ -21,6 +23,7 @@ export default function SearchBar({ onAdd, searchcards }) {
                     return (
                         <SearchCard
                             key={val.id}
+                            sublist={sublist}
                             searchcard={val}
                             onAdd={onAdd} />
                         

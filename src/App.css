@@ -50,7 +50,7 @@
 }
 
 .show {
-  display: contents;
+  display:flex;
 }
 
 .hide {
@@ -152,6 +152,11 @@
   font-style: normal;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.button:hover {
+  transform: scale(0.98);
+  cursor: pointer;
 }
 
 /* .button signin {

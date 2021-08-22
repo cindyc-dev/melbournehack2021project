@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function SearchCard({ searchcard, onAdd }) {
+export default function SearchCard({ sublist, searchcard, onAdd }) {
     const currency = '$'
 
     return (
-        <div className="search-card" onClick={onAdd(searchcard.id, searchcard.name, searchcard.price)}>
+        <div className={`search-card`} onClick={()=> onAdd(searchcard.id)}>
             <div className="searchname">
                 {searchcard.name}
             </div>
@@ -12,7 +12,7 @@ export default function SearchCard({ searchcard, onAdd }) {
                 
             </div>
             <div className="searchprice">
-                {currency}{typeof(searchcard.price)=="number" ? searchcard.price.toFixed(2):searchcard.price} 
+                {currency}{typeof(searchcard.price)=="number" ? searchcard.price.toFixed(2): searchcard.price} 
             </div>
         </div>
     )

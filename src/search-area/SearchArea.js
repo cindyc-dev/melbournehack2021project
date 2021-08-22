@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 
 import SearchHeader from './SearchHeader'
 
-export default function SearchArea({onAdd, searchResults}){
+export default function SearchArea({sublist, onAdd, searchResults}){
         return (
             <div className="search-area">
                 <SearchHeader />
-                <SearchBar onAdd={onAdd} searchcards={searchResults}/>
+                <SearchBar sublist={sublist} onAdd={onAdd} searchcards={searchResults}/>
             </div>
         )
 }

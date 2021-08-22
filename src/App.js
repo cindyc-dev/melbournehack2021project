@@ -14,14 +14,51 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 
-import { auth, db } from "./header/firebase";
+import { auth, db, config } from "./config/Config";
 import firebase from 'firebase'
 
+// class App extends React.Component {
+//   constructor(props){
+//     super(props)
+//     firebase.initializeApp(config)
+
+//     this.state = {
+//       user: useAuthState(auth),
+//       userId: '',
+//       data: null
+//     }
+//   }
+
+//   componentDidMount() {
+//     this.fetchUserId()
+//     this.fetchUserData()
+//     this.fetchSearchData()
+//   }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevState !== this.state) {
+//       this.writeUserData()
+//     }
+//   }
+
+//   writeUserData = () => {
+//     firebase.database()
+//       .set(this.state)
+//     console.log("DATA SAVED")
+//   }
+
+//   fetchUserData = () => {
+
+//   }
+
+// yes - accepted - now should be done lol soz
+// 'chuahxinyu/melbournehack2021project'
+// "For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository)"
 export default function App() {
 
   // Getting user data from 'users' db
   const [user, loading] = useAuthState(auth);
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState('')  // Id in `users` db
   const [data, setData] = useState(null)  // the whole User Object
   const [name, setName] = useState('')
   const [sublist, setSubList] = useState([])
@@ -55,7 +92,7 @@ export default function App() {
       setSubList(data.subscriptionList.map((sub) => (
         sub.trim()
       )))
-      
+
     } catch (err) {
       console.error(err);
     //   alert("An error occured while fetching user data");
@@ -76,9 +113,9 @@ export default function App() {
               var docObject = doc.data()
               res.push({
                 "id": doc.id, 
+                // i think it's addCard problem ;-; wurps Apps
                 "name": docObject['sub-name'], 
                 "price": docObject['sub-price'] || 0})
-
               if (sublist.includes(String(doc.id))){
                 sub.push({
                   "id": doc.id, 
@@ -96,15 +133,43 @@ export default function App() {
   }
 
   const addCard = (subid) => {
-    var docRef = db.collection("users").doc(userId)
-    docRef.update({
+    console.log("ADDCARD CALLED")
+    console.log("!SUBID ADDED",subid)
+    db.collection("users").doc(userId).update({
       subscriptionList: firebase.firestore.FieldValue.arrayUnion(subid)
     })
+    // .then(()=> {
+    //   console.log('Addded Card Successfully')
+    // })
+    .catch((error) => {
+        console.error(error)
+    })
   }
+// idk what u did. but it stopped laggin all of a sudden.
+
+  // const addCard = async (subid) => {
+  //   var docRef = db.collection("users").doc(userId)
+
+  //   docRef.set({
+  //     name: data.name,
+  //     email: data.email,
+  //     subscriptionList: [subid, ...sublist],
+  //     uid: user.uid
+  //   })
+  //   return null;
+  // }
+
   const deleteCard = (subid) => {
     var docRef = db.collection("users").doc(userId)
     docRef.update({
-      subscriptionList: firebase.firestore.FieldValue.arrayRemove(subid)
+      subscriptionList: firebase.firestore.FieldValue.arrayRemove(String(subid))
+    })
+    .then(()=> {
+      console.log('Deleted Card Successfully')
+    })
+    // Which is our root directory? is it App.js? i think it's just the whole folder so like `\`
+    .catch((error) => {
+        console.error(error)
     })
   }
 
@@ -125,7 +190,7 @@ export default function App() {
             {user? null:<Redirect exact to="/" />}
             
             <Header name={name} email={data?data.email:null} uid={userId} />
-            <SearchArea onAdd={addCard} searchResults={searchResults}/>
+            <SearchArea sublist={sublist} onAdd={addCard} searchResults={searchResults}/>
             <Summary onDelete={deleteCard} mySubs={mySubscriptions}/>
             <Navbar />
           </Route>

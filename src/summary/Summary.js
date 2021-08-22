@@ -15,6 +15,7 @@ export default function Summary({  onDelete, mySubs }) {
       {/* Subscriptions: {mySubs.map((sub)=>(
         <div>{sub.id}</div>
       ))} */}
+      
       <CardList
         cards={mySubs}
         onDelete={onDelete}
