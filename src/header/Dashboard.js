@@ -10,7 +10,6 @@ function Dashboard({ name, email, uid }) {
       <div className="dashboard__container">
         Logged in as: {name}
         <div>Email: {email}</div>
-        <div>User ID: {uid}</div>
         <button className="dashboard__btn" onClick={logout}>
           Logout
         </button>
