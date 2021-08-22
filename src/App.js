@@ -59,6 +59,7 @@ export default function App() {
   const [data, setData] = useState(null)  // the whole User Object
   const [name, setName] = useState('')
   const [sublist, setSubList] = useState([])
+  const [rerender, setRerender] = useState(false)
 
   const fetchUserId = async () => {
     try {
@@ -94,7 +95,7 @@ export default function App() {
         })    
 
     } catch (err) {
-      console.error(err);
+      console.log(err);
     //   alert("An error occured while fetching user data");
     }
   }
@@ -127,7 +128,7 @@ export default function App() {
           setMySubscriptions(sub)
         })
     } catch (err) {
-      console.error(err);
+      console.log(err);
     //   alert("An error occured while fetching user data");
     }
   }
@@ -142,31 +143,17 @@ export default function App() {
         console.error(error)
     })
   }
-// idk what u did. but it stopped laggin all of a sudden.
-
-  // const addCard = async (subid) => {
-  //   var docRef = db.collection("users").doc(userId)
-
-  //   docRef.set({
-  //     name: data.name,
-  //     email: data.email,
-  //     subscriptionList: [subid, ...sublist],
-  //     uid: user.uid
-  //   })
-  //   return null;
-  // }
 
   const deleteCard = (subid) => {
     console.log("DELETE CALLED")
     console.log("!SUBID DELETED",subid)
     var docRef = db.collection("users").doc(userId)
-    docRef.update({
+    return docRef.update({
       subscriptionList: firebase.firestore.FieldValue.arrayRemove(String(subid))
     })
     .then(()=> {
       console.log('Deleted Card Successfully')
     })
-    // Which is our root directory? is it App.js? i think it's just the whole folder so like `\`
     .catch((error) => {
         console.error(error)
     })
