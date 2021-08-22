@@ -27,7 +27,7 @@ export default function AddCard({ onAdd }) {
         }
 
         if (name && price) {
-            onAdd( { name, price })
+            onAdd({name, price});
             setName('')
             setPrice(0.00)
         }
