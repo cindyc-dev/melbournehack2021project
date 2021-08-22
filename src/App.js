@@ -51,9 +51,6 @@ import firebase from 'firebase'
 
 //   }
 
-// yes - accepted - now should be done lol soz
-// 'chuahxinyu/melbournehack2021project'
-// "For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository)"
 export default function App() {
 
   // Getting user data from 'users' db
@@ -86,12 +83,15 @@ export default function App() {
         .collection("users")
         .where("uid", "==", user?.uid)
         .get()
-      const data = await query.docs[0].data();
-      setData(data)
-      setName(data.name)
-      setSubList(data.subscriptionList.map((sub) => (
-        sub.trim()
-      )))
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            setData(doc.data())
+            setName(doc.data()['name'])
+            setSubList(doc.data()['subscriptionList'].map((sub) => (
+              sub.trim()
+            )))
+          })
+        })    
 
     } catch (err) {
       console.error(err);
@@ -138,9 +138,6 @@ export default function App() {
     db.collection("users").doc(userId).update({
       subscriptionList: firebase.firestore.FieldValue.arrayUnion(subid)
     })
-    // .then(()=> {
-    //   console.log('Addded Card Successfully')
-    // })
     .catch((error) => {
         console.error(error)
     })
@@ -160,6 +157,8 @@ export default function App() {
   // }
 
   const deleteCard = (subid) => {
+    console.log("DELETE CALLED")
+    console.log("!SUBID DELETED",subid)
     var docRef = db.collection("users").doc(userId)
     docRef.update({
       subscriptionList: firebase.firestore.FieldValue.arrayRemove(String(subid))
